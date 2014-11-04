@@ -428,7 +428,7 @@ FABRIC = {
     "REQUIREMENTS_PATH": "", # Path to pip requirements, relative to project
     "GUNICORN_PORT": 8000, # Port gunicorn will listen on
     "LOCALE": "en_US.UTF-8", # Should end with ".UTF-8"
-    "LIVE_HOSTNAME": "http://ec2-54-65-51-190.ap-northeast-1.compute.amazonaws.com/", # Host for public site.
+    "LIVE_HOSTNAME": "ec2-54-65-51-190.ap-northeast-1.compute.amazonaws.com", # Host for public site.
     "REPO_URL": "https://github.com/she110ff/bunker_seoul.git", # Git or Mercurial remote repo URL for the project
     "DB_PASS": DB_PASS, # Live database password
     "ADMIN_PASS": ADMIN_PASS, # Live admin user password

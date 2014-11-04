@@ -4,5 +4,10 @@
 *.swp
 .DS_Store
 .coverage
+
+**/static/media/
+**/static/CACHE/
+
 local_settings.py
-/static
+local_settings.pyc
+fabfile.py
