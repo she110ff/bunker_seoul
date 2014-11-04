@@ -422,13 +422,13 @@ except ImportError:
 FABRIC = {
     "SSH_USER": "ubuntu", # SSH username
     "SSH_KEY_PATH":  "/Users/she110ff/thebskey.cer", # Local path to SSH key file, for key-based auth
-    "HOSTS": ["54.64.186.188"], # List of hosts to deploy to
+    "HOSTS": ["54.65.51.190"], # List of hosts to deploy to
     "VIRTUALENV_HOME": "/home/ubuntu", # Absolute remote path for virtualenvs
     "PROJECT_NAME": "bunker", # Unique identifier for project
     "REQUIREMENTS_PATH": "", # Path to pip requirements, relative to project
     "GUNICORN_PORT": 8000, # Port gunicorn will listen on
     "LOCALE": "en_US.UTF-8", # Should end with ".UTF-8"
-    "LIVE_HOSTNAME": "www.example.com", # Host for public site.
+    "LIVE_HOSTNAME": "http://ec2-54-65-51-190.ap-northeast-1.compute.amazonaws.com/", # Host for public site.
     "REPO_URL": "https://github.com/she110ff/bunker_seoul.git", # Git or Mercurial remote repo URL for the project
     "DB_PASS": DB_PASS, # Live database password
     "ADMIN_PASS": ADMIN_PASS, # Live admin user password
