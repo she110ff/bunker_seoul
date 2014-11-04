@@ -27,6 +27,9 @@ urlpatterns += patterns('',
         name="shop_order_history"),
 
     (r'^accounts/', include('allauth.urls')),
+
+
+    url(r'^seoul/', include('seoul.urls')),
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.
 

@@ -296,8 +296,6 @@ ROOT_URLCONF = "%s.urls" % PROJECT_DIRNAME
 # Always use forward slashes, even on Windows.
 # Don't forget to use absolute paths, not relative paths.
 TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
-
-ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_EMAIL_REQUIRED = True
 
@@ -331,7 +329,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
 
-
+    "seoul",
 
     "cartridge.shop",
 )
@@ -401,31 +399,6 @@ LOGIN_REDIRECT_URL = '/'
 
 
 
-###################
-# DEPLOY SETTINGS #
-###################
-
-# These settings are used by the default fabfile.py provided.
-# Check fabfile.py for defaults.
-
-# FABRIC = {
-#     "SSH_USER": "", # SSH username
-#     "SSH_PASS":  "", # SSH password (consider key-based authentication)
-#     "SSH_KEY_PATH":  "", # Local path to SSH key file, for key-based auth
-#     "HOSTS": [], # List of hosts to deploy to
-#     "VIRTUALENV_HOME":  "", # Absolute remote path for virtualenvs
-#     "PROJECT_NAME": "", # Unique identifier for project
-#     "REQUIREMENTS_PATH": "", # Path to pip requirements, relative to project
-#     "GUNICORN_PORT": 8000, # Port gunicorn will listen on
-#     "LOCALE": "en_US.UTF-8", # Should end with ".UTF-8"
-#     "LIVE_HOSTNAME": "www.example.com", # Host for public site.
-#     "REPO_URL": "", # Git or Mercurial remote repo URL for the project
-#     "DB_PASS": "", # Live database password
-#     "ADMIN_PASS": "", # Live admin user password
-#     "SECRET_KEY": SECRET_KEY,
-#     "NEVERCACHE_KEY": NEVERCACHE_KEY,
-# }
-
 
 ##################
 # LOCAL SETTINGS #
@@ -438,6 +411,30 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+###################
+# DEPLOY SETTINGS #
+###################
+
+# These settings are used by the default fabfile.py provided.
+# Check fabfile.py for defaults.
+
+FABRIC = {
+    "SSH_USER": "ubuntu", # SSH username
+    "SSH_KEY_PATH":  "/Users/she110ff/thebskey.cer", # Local path to SSH key file, for key-based auth
+    "HOSTS": ["54.64.186.188"], # List of hosts to deploy to
+    "VIRTUALENV_HOME": "/home/ubuntu", # Absolute remote path for virtualenvs
+    "PROJECT_NAME": "bunker", # Unique identifier for project
+    "REQUIREMENTS_PATH": "", # Path to pip requirements, relative to project
+    "GUNICORN_PORT": 8000, # Port gunicorn will listen on
+    "LOCALE": "en_US.UTF-8", # Should end with ".UTF-8"
+    "LIVE_HOSTNAME": "www.example.com", # Host for public site.
+    "REPO_URL": "https://github.com/she110ff/bunker_seoul.git", # Git or Mercurial remote repo URL for the project
+    "DB_PASS": DB_PASS, # Live database password
+    "ADMIN_PASS": ADMIN_PASS, # Live admin user password
+    "SECRET_KEY": SECRET_KEY,
+    "NEVERCACHE_KEY": NEVERCACHE_KEY,
+}
 
 
 ####################

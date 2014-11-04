@@ -415,7 +415,7 @@ def create():
     with project():
         if env.reqs_path:
             pip("-r %s/%s" % (env.proj_path, env.reqs_path))
-        pip("gunicorn setproctitle south psycopg2 "
+        pip("gunicorn setproctitle south psycopg2 django==1.6.5 Cartridge  "
             "django-compressor python-memcached")
         manage("createdb --noinput --nodata")
         python("from django.conf import settings;"
