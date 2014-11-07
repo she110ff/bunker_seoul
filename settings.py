@@ -337,7 +337,7 @@ INSTALLED_APPS = (
 )
 
 
-AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
+#AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
 
 
 # List of processors used by RequestContext to populate the context.
