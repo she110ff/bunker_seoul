@@ -48,6 +48,8 @@ def sub_products(user):
 @register.assignment_tag
 def subscription_list(user):
 	try:
+		print "subscription_list"
+		print "user name ", user.username
 		obj = {}
 		uc, created= UserCategory.objects.get_or_create(user=user)
 		uc_all  = uc.categories.all().values_list('id', flat=True)
