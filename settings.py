@@ -331,6 +331,7 @@ INSTALLED_APPS = (
 
     "seoul",
     "userprofile",
+    "widget_tweaks",
 
     "cartridge.shop",
 )

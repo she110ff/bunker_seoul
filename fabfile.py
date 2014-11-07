@@ -417,7 +417,7 @@ def create():
             pip("-r %s/%s" % (env.proj_path, env.reqs_path))
         pip("gunicorn setproctitle south psycopg2 django==1.6.5 Cartridge  "
             "django-compressor python-memcached")
-        manage("createdb --noinput --nodata")
+        manage("createdb")
         python("from django.conf import settings;"
                "from django.contrib.sites.models import Site;"
                "Site.objects.filter(id=settings.SITE_ID).update(domain='%s');"
