@@ -330,9 +330,14 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.facebook',
 
     "seoul",
+    "userprofile",
 
     "cartridge.shop",
 )
+
+
+AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
+
 
 # List of processors used by RequestContext to populate the context.
 # Each one should be a callable that takes the request object as its

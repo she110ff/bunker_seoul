@@ -1,132 +1,43 @@
 {% extends "seoul/base.html" %}
-{% load i18n staticfiles %}
+
+{% load seoul_tags i18n %}
 
 {% block main %}
-{% with object=request.user %}
 
-<div class="wrapper">
-	<!--=== Header ===-->	
-	<div id="hd">
-		<!-- Top -->
-		<div id="top" class="clear">
-			<a class="fa fa-bars fl" onClick="menuOpen('snb');return false;"><span class="sr-only">메뉴</span></a>
-			<a class="fa fa-search fr" href="search.html"><span class="sr-only">검색</span></a>
-			<h1><a href="index.html">BUNKER SEOUL</a></h1>
-		</div>
-	</div>
-	<!--=== End Header ===-->
 
 	<!--=== Content Part ===-->
 	<div class="container content">
 		<!-- 그리드 목록 -->
 		<section class="grid-boxes_wrp">
 			<ul class="grid-boxes clearfix">
-				<!-- menu -->
-				<li class="grid-box">
-					<div class="grid-boxes-in">
-						<a href="detail.html"><img src="https://s-media-cache-ak0.pinimg.com/236x/b6/99/9c/b6999c2564eb53e247aee545a109d28e.jpg" alt=""></a>
-						<div class="grid-boxes-caption">
-							<div class="title"><a href="detail.html">JackThreads - Braydon Jacket Stone</a></div>
-							<div class="clearfix">
-								<div class="pull-left"><strong>8,000원</strong> </div>
-								<div class="pull-right color-silver"><button type="button" class="fa fa-heart color-silver" title="좋아요"><span class="sr-only">좋아요</span></button> 106</div>
-							</div>        
+			
+					{% sub_products request.user as products %}
+					{% for product in products %}
+					<!-- menu -->
+					<li class="grid-box">
+						<div class="grid-boxes-in">
+							{% if product.image %}
+							<a href="{{ product.get_absolute_url }}"><img src="{{ MEDIA_URL }}{{ product.image }}" alt=""></a>						
+					        {% else %}
+					        <div class="placeholder"></div>
+					        {% endif %}
+							<div class="grid-boxes-caption">
+								<div class="title"><a href="{{ product.get_absolute_url }}">{{ product }}</a></div>
+								<div class="clearfix">
+									<div class="pull-left"><strong>{% if product.has_price %}{{ product.unit_price }}{% endif %}</strong> </div>
+									<div class="pull-right color-silver"><button type="button" class="fa fa-heart color-silver" title="좋아요"><span class="sr-only">좋아요</span></button> 106</div>
+								</div>        
+							</div>
 						</div>
-						<div class="btnarea">
-							<button type="button" class="btn-u btn-u-sm btn-block">구매하기</button>
-						</div>
-					</div>
-				</li>
-				<!-- menu -->
-				<li class="grid-box">
-					<div class="grid-boxes-in">
-						<a href="detail.html"><img src="https://s-media-cache-ec0.pinimg.com/236x/7d/9d/e1/7d9de1de4c2e7bceff53ebf21acc29b1.jpg" alt=""></a>
-						<div class="grid-boxes-caption">
-							<div class="title"><a href="detail.html">Joshua Sanders SS15 Capsule Collection</a></div>
-							<div class="clearfix">
-								<div class="pull-left"><strong>8,000원</strong> </div>
-								<div class="pull-right color-silver"><button type="button" class="fa fa-heart color-silver" title="좋아요"><span class="sr-only">좋아요</span></button> 106</div>
-							</div>            
-						</div>
-						<div class="btnarea">
-							<button type="button" class="btn-u btn-u-sm btn-block">구매하기</button>
-						</div>
-					</div>
-				</li>
-				<!-- menu -->
-				<li class="grid-box">
-					<div class="grid-boxes-in">
-						<a href="detail.html"><img src="https://s-media-cache-ec0.pinimg.com/236x/14/19/35/141935abb9a2c503a48b23138d1fb6f8.jpg" alt=""></a>
-						<div class="grid-boxes-caption">
-							<div class="title"><a href="detail.html">Thom Browne Jersey</a></div>
-							<div class="clearfix">
-								<div class="pull-left"><strong>8,000원</strong> </div>
-								<div class="pull-right color-silver"><button type="button" class="fa fa-heart color-silver" title="좋아요"><span class="sr-only">좋아요</span></button> 106</div>
-							</div>            
-						</div>
-						<div class="btnarea">
-							<button type="button" class="btn-u btn-u-sm btn-block">구매하기</button>
-						</div>
-					</div>
-				</li>
-				<!-- menu -->
-				<li class="grid-box">
-					<div class="grid-boxes-in">
-						<a href="detail.html"><img src="https://s-media-cache-ec0.pinimg.com/236x/7d/9d/e1/7d9de1de4c2e7bceff53ebf21acc29b1.jpg" alt=""></a>
-						<div class="grid-boxes-caption">
-							<div class="title"><a href="detail.html">JackThreads - Braydon Jacket Stone</a></div>
-							<div class="clearfix">
-								<div class="pull-left"><strong>8,000원</strong> </div>
-								<div class="pull-right color-silver"><button type="button" class="fa fa-heart color-silver" title="좋아요"><span class="sr-only">좋아요</span></button> 106</div>
-							</div>            
-						</div>
-						<div class="btnarea">
-							<button type="button" class="btn-u btn-u-sm btn-block">구매하기</button>
-						</div>
-					</div>
-				</li>
-				<!-- menu -->
-				<li class="grid-box">
-					<div class="grid-boxes-in">
-						<a href="detail.html"><img src="https://s-media-cache-ak0.pinimg.com/236x/b6/99/9c/b6999c2564eb53e247aee545a109d28e.jpg" alt=""></a>
-						<div class="grid-boxes-caption">
-							<div class="title"><a href="detail.html">Joshua Sanders SS15 Capsule Collection</a></div>
-							<div class="clearfix">
-								<div class="pull-left"><strong>8,000원</strong> </div>
-								<div class="pull-right color-silver"><button type="button" class="fa fa-heart color-silver" title="좋아요"><span class="sr-only">좋아요</span></button> 106</div>
-							</div>            
-						</div>
-						<div class="btnarea">
-							<button type="button" class="btn-u btn-u-sm btn-block">구매하기</button>
-						</div>
-					</div>
-				</li>
-				<!-- menu -->
-				<li class="grid-box">
-					<div class="grid-boxes-in">
-						<a href="detail.html"><img src="https://s-media-cache-ec0.pinimg.com/236x/14/19/35/141935abb9a2c503a48b23138d1fb6f8.jpg" alt=""></a>
-						<div class="grid-boxes-caption">
-							<div class="title"><a href="detail.html">Thom Browne Jersey</a></div>
-							<div class="clearfix">
-								<div class="pull-left"><strong>8,000원</strong> </div>
-								<div class="pull-right color-silver"><button type="button" class="fa fa-heart color-silver" title="좋아요"><span class="sr-only">좋아요</span></button> 106</div>
-							</div>            
-						</div>
-						<div class="btnarea">
-							<button type="button" class="btn-u btn-u-sm btn-block">구매하기</button>
-						</div>
-					</div>
-				</li>
+					</li>
+					{% empty %}
+						<div style="text-align: center;">리스트가 없을 때, 여기 점선으로 둘러싸인<p> <a href="/seoul/subscription/list/"><strong>구독하기</strong></p><p></p></div>
+					{% endfor %}
 			</ul>
-			<div class="pa10">
-				<button type="button" class="btn-u btn-block">더보기</button>
-			</div>
 		</section>
 	</div><!--/container-->	 
 	<!-- End Content Part -->
-</div><!--/wrapper-->
 
 
 
-{% endwith %}
 {% endblock %}

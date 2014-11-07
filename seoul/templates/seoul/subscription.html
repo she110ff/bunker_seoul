@@ -1,0 +1,84 @@
+{% extends "seoul/base.html" %}
+
+{% load seoul_tags i18n %}
+
+{% block main %}
+
+
+
+	<!--=== Content Part ===-->
+	<div class="container content">
+	
+		{% csrf_token %}
+		<!-- 상품정보 -->
+		<div class="rd clearfix">
+			<section class="coupon_lst">
+				<h3>구독목록 <b class="color-green">13</b></h3>
+				<ul>
+					{% subscription_list request.user as subscription_obj  %}
+					
+					{% for subscription in subscription_obj.sub %}
+					<li>
+						<div>
+							<img class="pull-left" style="width:40px; height:40px;" src="{{ MEDIA_URL }}{{subscription.featured_image}}" alt="">
+							<strong>{{subscription.title}}</strong>
+							::{{subscription.description}}
+						</div>
+						<button type="button"><i class="fa fa-check-circle color-green"></i><a href="#"  onclick="javascript:subscript(false,{{subscription.id}}); return false;">구독취소</a></button>
+					</li>
+					{% endfor %}
+	
+					{% for subscription in subscription_obj.notsub %}
+					<li>
+						<div>
+							<img class="pull-left" style="width:40px; height:40px;" src="{{ MEDIA_URL }}{{subscription.featured_image}}" alt="">
+							<strong>{{subscription.title}}</strong>
+							::{{subscription.description}}
+						</div>
+						<button type="button"><i class="fa fa-check-circle color-green"></i><a href="#"  onclick="javascript:subscript(true,{{subscription.id}}); return false;">구독하기</a></button>
+					</li>
+					{% endfor %}
+					
+				</ul>
+			</section>
+		</div>
+	
+	
+	
+		</section>
+	</div><!--/container-->	 
+	<!-- End Content Part -->
+	
+	
+<script>
+
+function subscript(subscription_value, category_id){
+	console.log("subscription_value :"+ subscription_value)
+	var action = "del"
+	if(subscription_value){
+		action = "add"
+	}
+		
+	
+    $.ajax({
+      type: 'POST',
+	  url: "/seoul/user/subscription/",
+	  data:{'action':action, 'category_id':category_id, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value}
+	})
+	.done(function( data ) {
+		if ( console && console.log ) {
+			console.log( "subscript > data: ", data)
+			location.href = "/seoul/subscription/list/"
+		}
+	});	
+}
+
+
+
+
+</script>
+
+
+	
+	
+{% endblock %}
