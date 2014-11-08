@@ -35,7 +35,8 @@
 {% endcompress %}
 
 {% compress js %}
-<!-- <script src="{% static "js/jquery-1.8.3.min.js" %}"  type="text/javascript"></script> --> 
+<!-- <script src="{% static "js/jquery-1.8.3.min.js" %}"  type="text/javascript"></script> -->
+<script src="{% static "assets/plugins/jquery-1.10.2.min.js" %}" type="text/javascript"></script>  
 <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
 <script src="{% static "js/bootstrap.js" %}"></script>
 <script src="{% static "js/bootstrap-extras.js" %}"></script>
@@ -57,7 +58,7 @@
 		<!-- 로그인 전
 		<a class="btn-u btn-u-sm" href="#">로그인</a> -->
 		<!-- 로그인 후 -->
-		<h1><img class="pull-left" src="http://img.ezmember.co.kr/cache/board/2012/12/30/950b4b2daac4355a101ec83505a0984e.jpg" alt=""> 홍길동</h1>
+		<h1><!-- <img class="pull-left" src="http://img.ezmember.co.kr/cache/board/2012/12/30/950b4b2daac4355a101ec83505a0984e.jpg" alt="">  -->{{request.user.username}}</h1>
 		<a class="fa fa-chevron-left pull-right" href="#" onClick="menuClose();return false;"><span class="sr-only">Close</span></a>
 	</header>
 	<section>
@@ -65,7 +66,7 @@
 			<ul>
 				<li><a href="/">MAIN</a></li>
 				<li><a href="/seoul/subscription/list/">SUBSCRIPTION</a></li>
-				<li><a href="/seoul/cart/">CART</li>
+				<li><a href="/shop/cart/">CART</li>
 				<li><a href="/seoul/profile/">PROFILE<!-- <span class="badge rounded-2x badge-red">3</span> --></a></li>
 				<li><a href="/account/logout/">LOGOUT</li>
 			</ul>
@@ -80,8 +81,10 @@
 	<div id="hd">
 		<!-- Top -->
 		<div id="top" class="clear">
+			{% if user.is_authenticated %}
 			<a class="fa fa-bars fl" onClick="menuOpen('snb');return false;"><span class="sr-only">메뉴</span></a>
-			<a class="fa fa-search fr" href="search.html"><span class="sr-only">검색</span></a>
+			{% endif %}
+<!-- 			<a class="fa fa-search fr" href="search.html"><span class="sr-only">검색</span></a> -->
 			<h1><a href="/">BUNKER SEOUL</a></h1>
 		</div>
 	</div>
@@ -93,7 +96,6 @@
 
 
  
-<script src="{% static "assets/plugins/jquery-1.10.2.min.js" %}" type="text/javascript"></script> 
 <script src="{% static "assets/plugins/jquery-migrate-1.2.1.min.js" %}"  type="text/javascript"></script> 
 <script src="{% static "assets/plugins/bootstrap/js/bootstrap.min.js" %}"  type="text/javascript"></script>
 <script src="{% static "assets/plugins/back-to-top.js" %}"  type="text/javascript"></script>

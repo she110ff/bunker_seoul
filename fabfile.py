@@ -416,7 +416,7 @@ def create():
         if env.reqs_path:
             pip("-r %s/%s" % (env.proj_path, env.reqs_path))
         pip("gunicorn setproctitle south psycopg2 django==1.6.5 Cartridge  "
-            "django-compressor python-memcached")
+            " django-widget-tweaks django-compressor python-memcached")
         manage("createdb")
         python("from django.conf import settings;"
                "from django.contrib.sites.models import Site;"

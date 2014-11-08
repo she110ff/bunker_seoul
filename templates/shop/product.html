@@ -1,0 +1,275 @@
+{% extends "seoul/base.html" %}
+{% load staticfiles mezzanine_tags shop_tags rating_tags i18n %}
+
+{% block meta_title %}{{ product.meta_title }}{% endblock %}
+{% block body_id %}category{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% for keyword in product.keywords.all %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ product.description }}
+{% endmetablock %}{% endblock %}
+
+{% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static "mezzanine/css/magnific-popup.css" %}">
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script src="{% static "mezzanine/js/magnific-popup.js" %}"></script>
+<script>
+$(document).ready(function() {
+    $('#product-images-large').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        gallery: {
+            enabled: true,
+        }
+    });
+});
+</script>
+{% endblock %}
+
+{% block extra_head %}
+<script>var variations = {{ variations_json|safe }};</script>
+<script src="{% static "cartridge/js/product_variations.js" %}"></script>
+{% endblock %}
+
+{% block breadcrumb_menu %}
+{{ block.super }}
+<li>{{ product.title }}</li>
+{% endblock %}
+
+{% block title %}
+{% editable product.title %}{{ product.title }}{% endeditable %}
+{% endblock %}
+
+{% block main %}
+
+
+	<!--=== Content Part ===-->
+	<div class="container content">
+
+		<!-- 상품정보 -->
+		<div class="rd clearfix">
+			<!-- 헤더 -->
+			<section>
+				<div class="rd_img">
+					<div class="rd_slide">
+						<!-- 슬라이드 이미지 -->
+				
+						{% if images %}
+						<div>
+							<ul class="bxslider">
+								{% for image in images %}
+								<li><img src="{{ MEDIA_URL }}{{ image.file }}" alt=""></li>
+								{% endfor %}
+							</ul>
+						</div>	
+						{% endif %}		
+					</div>
+
+					
+{% if product.available and has_available_variations %}	
+					<form method="post" id="add-cart" class="shop-form">				
+					<div class="rd_img_meta">
+						<div class="row">
+							<div class="col-md-5 col-xs-5">
+								<!-- <button type="button">Add Cart</button> -->
+								<input type="submit" class="btn btn-primary pull-right" name="add_wishlist" value="{% trans "Add Cart" %}">
+							</div>
+							<div class="col-md-5 col-xs-5">
+								<!-- <button type="button">Buy</button> -->
+								<input type="submit" class="btn btn-primary  pull-right" name="add_cart" value="{% trans "Buy Item" %}">
+							</div>
+						</div>
+					</div>
+
+
+
+				</div>
+				<header class="rd_hd text-center">
+					<h2>{{product.title}}</h2>
+					<p>
+						{% editable product.content %}
+						{{ product.content|richtext_filters|safe }}
+						{% endeditable %}
+					</p>
+				</header>
+				<div class="price_info">
+					{% for variation in variations %}
+					
+					{% if variation.has_price %}
+						<p class="clearfix" {% if not variation.default %}style="display:none;"{% endif %}>PRICE <b class="pull-right"> <strong>{{ variation.price|currency }}</strong></b></p>
+			        {% else %}
+			            {% if has_available_variations %}
+			            <span class="error-msg">
+			            {% trans "The selected options are currently unavailable." %}
+			            </span>
+			            {% endif %}
+			        {% endif %}				        
+				    {% endfor %}			
+					<!-- 구매옵션 -->
+	
+					{% fields_for add_product_form %}
+
+				
+<!--
+					<div class="option_info">
+						<select class="form-control" required>
+							<option value="">== 옵션선택 ==</option>
+							<option value="S" disabled="" class="disabled">S  [품절]</option>
+							<option value="M" disabled="" class="disabled">M  [품절]</option>
+							<option value="L" disabled="" class="disabled">L  [품절]</option>
+							<option value="XL" selected="selected">XL</option>
+							<option value="2XL">2XL</option>
+							<option value="3XL">3XL</option>
+						</select>	
+					</div>
+-->
+					</form>
+					<!-- //구매옵션 -->
+				</div>
+
+{% else %}
+<p class="error-msg">{% trans "This product is currently unavailable." %}</p>
+{% endif %}				
+			
+			</section>
+			<!-- Detail -->
+<!--
+			<section class="rd_list">
+				<h3>Detail</h3>
+				<ul class="price-list">
+					<li>Fabric Type <strong>Cotton</strong></li>
+					<li>Season <strong>All</strong></li>
+					<li>Color <strong>Red</strong></li>
+					<li>Size <strong><small>정보없음</small></strong></li>
+					<li class="total color-green">SPECIAL(강조예시) <strong class="color-green">58,000 <small>원</small></strong></li>
+				</ul>
+			</section>
+-->
+	<!--
+	
+				<section class="review_lst">
+					<h3>Comment <b class="color-green">14</b></h3>
+					<ul>
+						<li>
+							<img class="img-circle pull-left" src="http://media-cache-ec0.pinimg.com/avatars/jackimccormick_1339108529_75.jpg" alt="Jacki McCormick">
+							<div>
+								<div class="meta">홍길동 <small>2013.08.02</small></div>
+								<div class="star-vote color-green">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star-half-o"></i>
+								</div>
+								<div>
+									정말 멋진 옷이네요! 최고예요!<br>
+									정말 멋진 옷이네요! 최고예요!
+								</div>
+							</div>
+						</li>
+						<li class="owner">
+							<img class="img-circle pull-left" src="http://media-cache-ec0.pinimg.com/avatars/jackimccormick_1339108529_75.jpg" alt="Jacki McCormick">
+							<div>
+								<div class="meta">사장님 <small>2013.08.02</small></div>
+								<div>
+									정말 멋진 옷이네요! 최고예요!<br>
+									정말 멋진 옷이네요! 최고예요!
+								</div>
+							</div>
+						</li>
+						<li>
+							<img class="img-circle pull-left" src="http://media-cache-ec0.pinimg.com/avatars/jackimccormick_1339108529_75.jpg" alt="Jacki McCormick">
+							<div>
+								<div class="meta">홍길동 <small>2013.08.02</small></div>
+								<div class="star-vote color-green">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star-half-o"></i>
+								</div>
+								<div>
+									정말 멋진 옷이네요! 최고예요!<br>
+									정말 멋진 옷이네요! 최고예요!
+								</div>
+							</div>
+						</li>
+						<li class="owner re">
+							<i class="fa fa-share fa-flip-vertical"></i>
+							<div>
+								<div class="meta">사장님 <small>2013.08.02</small></div>
+								<div>
+									정말 멋진 옷이네요! 최고예요!<br>
+									정말 멋진 옷이네요! 최고예요!
+								</div>
+							</div>
+						</li>
+						<li>
+							<img class="img-circle pull-left" src="http://media-cache-ec0.pinimg.com/avatars/jackimccormick_1339108529_75.jpg" alt="Jacki McCormick">
+							<div>
+								<div class="meta">홍길동 <small>2013.08.02</small></div>
+								<div class="star-vote color-green">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star-half-o"></i>
+								</div>
+								<div>
+									정말 멋진 옷이네요! 최고예요!<br>
+									정말 멋진 옷이네요! 최고예요!
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="section_btnarea">
+						<button type="button" class="btn-u btn-block" data-toggle="modal" data-target="#modal_review">리뷰작성</button>
+					</div>
+				</section>
+	-->
+			<section>
+				<h3>이 상점의 다른 상품</h3>
+			</section>
+		</div>
+
+		{% if settings.SHOP_USE_RELATED_PRODUCTS and related_products %}
+		<!-- 그리드 목록 -->
+		<section class="grid-boxes_wrp">
+			<ul class="grid-boxes clearfix">
+				<!-- menu -->
+				{% for product in related_products %}
+				<li class="grid-box">
+					<div class="grid-boxes-in">
+						<a href="detail.html"><img src="https://s-media-cache-ak0.pinimg.com/236x/b6/99/9c/b6999c2564eb53e247aee545a109d28e.jpg" alt=""></a>
+						<div class="grid-boxes-caption">
+							<div class="title"><a href="{{ product.get_absolute_url }}">{{ product }}</a></div>
+							<div class="clearfix">
+								<div class="pull-left"><strong>{{ product.price|currency }}</strong> </div>
+								<!-- <div class="pull-right color-silver"><button type="button" class="fa fa-heart color-silver" title="좋아요"><span class="sr-only">좋아요</span></button> 106</div> -->
+							</div>        
+						</div>
+<!--
+						<div class="btnarea">
+							<button type="button" class="btn-u btn-u-sm btn-block">구매하기</button>
+						</div>
+-->
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</section>
+		{% endif %}
+	</div><!--/container-->	 
+
+
+{% endblock %}
