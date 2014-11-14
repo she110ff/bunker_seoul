@@ -24,7 +24,7 @@
 							<strong>{{subscription.title}}</strong>
 							::{{subscription.description}}
 						</div>
-						<button type="button"><i class="fa fa-check-circle color-green"></i><a href="#"  onclick="javascript:subscript(false,{{subscription.id}}); return false;">구독취소</a></button>
+						<button type="button"><a href="#"  onclick="javascript:subscript(false,{{subscription.id}}); return false;"><i class="fa fa-check-circle color-green"></i>구독취소</a></button>
 					</li>
 					{% endfor %}
 	
@@ -35,7 +35,7 @@
 							<strong>{{subscription.title}}</strong>
 							::{{subscription.description}}
 						</div>
-						<button type="button"><i class="fa fa-check-circle color-green"></i><a href="#"  onclick="javascript:subscript(true,{{subscription.id}}); return false;">구독하기</a></button>
+						<button type="button"><a href="#"  onclick="javascript:subscript(true,{{subscription.id}}); return false;"><i class="fa fa-check-circle"></i>구독하기</a></button>
 					</li>
 					{% endfor %}
 					
