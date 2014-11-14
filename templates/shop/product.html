@@ -249,7 +249,7 @@ $(document).ready(function() {
 				{% for product in related_products %}
 				<li class="grid-box">
 					<div class="grid-boxes-in">
-						<a href="detail.html"><img src="https://s-media-cache-ak0.pinimg.com/236x/b6/99/9c/b6999c2564eb53e247aee545a109d28e.jpg" alt=""></a>
+						<a href="{{ product.get_absolute_url }}"><img src="https://s-media-cache-ak0.pinimg.com/236x/b6/99/9c/b6999c2564eb53e247aee545a109d28e.jpg" alt=""></a>
 						<div class="grid-boxes-caption">
 							<div class="title"><a href="{{ product.get_absolute_url }}">{{ product }}</a></div>
 							<div class="clearfix">
