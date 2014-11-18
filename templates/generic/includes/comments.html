@@ -1,8 +1,10 @@
-<section class="review_lst">
-	<h3>{% trans "Comments" %}</h3>
+
 
 {% load i18n mezzanine_tags comment_tags %}
 <div id="comments">
+	<section class="review_lst">
+		<h3>{% trans "Comments" %}</h3>
+
 {% if settings.COMMENTS_DISQUS_SHORTNAME %}
 {% include "generic/includes/disqus_comments.html" %}
 {% else %}
@@ -32,6 +34,6 @@ $(function() {
 	</form>
 </div>
 {% endif %}
-</div>
 
-</section>
+	</section>
+</div>
