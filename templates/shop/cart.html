@@ -19,8 +19,8 @@
 {% if error.values.0 %}{{ error.values.0 }}{% endif %}
 {% endfor %}
 {% endif %}
-{{ cart_formset.management_form }}
 <div class="table-responsive">
+{{ cart_formset.management_form }}
 
 <table class="table table-striped">
     <thead>
@@ -46,6 +46,7 @@
 			</td>
 			-->
 			<td class="item left">
+				{{ form.id }}
 				<a href="{{ item.get_absolute_url }}">{{ item.description }}</a>
 			</td>
 			<td class="amount center">
