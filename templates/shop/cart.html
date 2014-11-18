@@ -24,37 +24,37 @@
 
 <table class="table table-striped">
     <thead>
-    <tr>
-        <th class="center"><!--{% trans "Remove?" %} --></th>
-        <th class="item left">{% trans "Item" %}</th>
-        <th>{% trans "Unit Price" %} X {% trans "Qty" %}</th>
-        <th>{% trans "Price" %}</th>
-    </tr>
+		<tr>
+			<th class="center"><!--{% trans "Remove?" %} --></th>
+			<th class="item left">{% trans "Item" %}</th>
+			<th>{% trans "Unit Price" %} X {% trans "Qty" %}</th>
+			<th>{% trans "Price" %}</th>
+		</tr>
     </thead>
     <tbody>
     {% for form in cart_formset.forms %}
     {% with form.instance as item %}
-    <tr>
-        <!--
-		<td width="30">
-            {{ form.id }}
-            {% if item.image %}
-            <a href="{{ item.get_absolute_url }}">
-                <img alt="{{ item.description }}" src="{{ MEDIA_URL }}{% thumbnail item.image 30 30 %}">
-            </a>
-            {% endif %}
-        </td>
-		-->
-        <td class="center">{{ form.DELETE }}</td>
-        <td class="item left">
-            <a href="{{ item.get_absolute_url }}">{{ item.description }}</a>
-        </td>
-        <td>
-			<div>{{ item.unit_price|currency }}</div>
-			<div class="quantity">{{ form.quantity }}</div>
-		</td>
-        <td>{{ item.total_price|currency }}</td>
-    </tr>
+		<tr>
+			<!--
+			<td width="30">
+				{{ form.id }}
+				{% if item.image %}
+				<a href="{{ item.get_absolute_url }}">
+					<img alt="{{ item.description }}" src="{{ MEDIA_URL }}{% thumbnail item.image 30 30 %}">
+				</a>
+				{% endif %}
+			</td>
+			-->
+			<td class="center">{{ form.DELETE }}</td>
+			<td class="item left">
+				<a href="{{ item.get_absolute_url }}">{{ item.description }}</a>
+			</td>
+			<td class="amount">
+				<div>{{ item.unit_price|currency }}</div>
+				<div class="quantity">{{ form.quantity }}</div>
+			</td>
+			<td class="total">{{ item.total_price|currency }}</td>
+		</tr>
     {% endwith %}
     {% endfor %}
     <tr>
