@@ -98,9 +98,8 @@ transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
 .checkout-panel .price{ padding-bottom:10px}
 .checkout-panel .order-totals{ font-size:16px}
 .cart-form th{ font-size:12px}
-.cart-form td{ font-size:13px}
-.cart-form .item{ max-width:120px; font-size:12px;white-space:normal}
-.cart-form .quantity input{ height:26px; margin:4px auto 0; padding:0}
+.cart-form .item{ max-width:120px; font-size:12px;white-space:normal !important}
+.cart-form .quantity input{ height:26px; margin:4px auto 0 !important; padding:0}
 
 /* heading */
 body,input,textarea,select,button,table{ font-size:14px;font-family:'나눔고딕','NanumGothic',ng,'맑은 고딕','Malgun Gothic','돋움',Dotum,'Apple SD Gothic Neo',sans-serif; color:#666}
