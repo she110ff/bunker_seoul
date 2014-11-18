@@ -25,3 +25,9 @@ def user_subscription(request):
 
     return HttpResponse(json.dumps(res), content_type="application/json")
 
+def pull_git(request):
+    import os
+    import subprocess as sp
+    output = sp.Popen(["git", "pull", "origin", "master", "-f"], stdout=sp.PIPE).communicate()[0]
+    res = {"result": output, "value":"null"}
+    return HttpResponse(json.dumps(res), content_type="application/json")

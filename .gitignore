@@ -2,6 +2,7 @@
 *.pyo
 *.db
 *.swp
+*.swo
 .DS_Store
 .coverage
 

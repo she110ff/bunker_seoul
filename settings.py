@@ -138,6 +138,17 @@ from __future__ import absolute_import, unicode_literals
 #         {"blank": True, "default": 1},
 #     ),
 # )
+EXTRA_MODEL_FIELDS = (
+    (
+        "cartridge.shop.models.Product.comments",
+        "mezzanine.generic.fields.CommentsField",
+        (),
+        { "blank" : True,  },
+    ),
+)
+
+COMMENTS_USE_RATINGS = False
+
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #

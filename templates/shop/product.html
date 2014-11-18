@@ -1,6 +1,12 @@
 {% extends "seoul/base.html" %}
 {% load staticfiles mezzanine_tags shop_tags rating_tags i18n %}
 
+{% load comment_tags %}
+
+
+
+
+
 {% block meta_title %}{{ product.meta_title }}{% endblock %}
 {% block body_id %}category{% endblock %}
 
@@ -156,6 +162,8 @@ $(document).ready(function() {
 			</section>
 -->
 		
+<h3>There are {{ product.comments_count }} comment{{ product.comments_count|pluralize }}</h3>
+{% comments_for product %}
 				<section class="review_lst">
 					<h3>Comment <b class="color-green">14</b></h3>
 					<ul>

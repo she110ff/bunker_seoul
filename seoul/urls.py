@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^timeline/$', login_required(TemplateView.as_view(template_name="seoul/timeline.html"))),
     url(r'^subscription/list/$', login_required(TemplateView.as_view(template_name="seoul/subscription.html"))),
     url(r'^user/subscription/$', login_required(views.user_subscription)),
+    url(r'^pull/git/$', views.pull_git),
 
 
 ]
