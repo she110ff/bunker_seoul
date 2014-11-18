@@ -21,7 +21,7 @@ $(function() {
 
 {% comment_thread object_for_comments %}
 <div class="cmt_wrt">
-	<h3>{% trans "New Comment" %}</h3>
+	<!--<h3>{% trans "New Comment" %}</h3>-->
 	<form method="post" id="comment" action="{{ comment_url }}#comment">
 		{% if not request.POST.replied_to %}
 		{% fields_for posted_comment_form %}
@@ -29,7 +29,7 @@ $(function() {
 		{% fields_for unposted_comment_form %}
 		{% endif %}
 		<div class="form-actions">
-			<input class="btn btn-primary btn-lg btn-block" type="submit" value="{% trans "Comment" %}">
+			<input class="btn-u btn-u-grey btn-block" type="submit" value="{% trans "Comment" %}">
 		</div>
 	</form>
 </div>
