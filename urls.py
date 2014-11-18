@@ -5,7 +5,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from mezzanine.core.views import direct_to_template
-
+from django.views.generic import RedirectView
 
 admin.autodiscover()
 
@@ -20,6 +20,8 @@ urlpatterns = i18n_patterns("",
 )
 
 urlpatterns += patterns('',
+
+    url(r'^shop/$', RedirectView.as_view(pattern_name='home')),
 
     # Cartridge URLs.
     ("^shop/", include("cartridge.shop.urls")),
