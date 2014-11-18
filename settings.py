@@ -171,6 +171,7 @@ ADMINS = (
 )
 MANAGERS = ADMINS
 
+
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
@@ -452,6 +453,13 @@ FABRIC = {
     "SECRET_KEY": SECRET_KEY,
     "NEVERCACHE_KEY": NEVERCACHE_KEY,
 }
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = USER_EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = USER_EMAIL_HOST_PASSWORD
 
 
 ####################
