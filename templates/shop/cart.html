@@ -20,6 +20,8 @@
 {% endfor %}
 {% endif %}
 {{ cart_formset.management_form }}
+<div class="table-responsive">
+
 <table class="table table-striped">
     <thead>
     <tr>
@@ -61,6 +63,7 @@
     </tr>
     </tbody>
 </table>
+</div>
 
 <div class="form-actions">
     <a href="{% url "shop_checkout" %}" class="btn btn-primary btn-lg pull-right">
