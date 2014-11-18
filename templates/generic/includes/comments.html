@@ -1,3 +1,5 @@
+<section class="review_lst">
+
 {% load i18n mezzanine_tags comment_tags %}
 <div id="comments">
 <h3>{% trans "Comments" %}</h3>
@@ -13,6 +15,8 @@ $(function() {
 });
 </script>
 <style>.input_id_honeypot {display:none !important;}</style>
+
+
 {% comment_thread object_for_comments %}
 <h3>{% trans "New Comment" %}</h3>
 <form method="post" id="comment" action="{{ comment_url }}#comment">
@@ -27,3 +31,5 @@ $(function() {
 </form>
 {% endif %}
 </div>
+
+</section>

@@ -103,6 +103,9 @@ transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
 .cart-form .quantity input{ height:26px; margin:4px auto 0 !important; padding:0}
 .frm2 .btn-u{ margin-bottom:10px}
 
+/* Comments */
+.input_id_name,.input_id_email,.input_id_url{ display:none !important}
+
 /* heading */
 body,input,textarea,select,button,table{ font-size:14px;font-family:'나눔고딕','NanumGothic',ng,'맑은 고딕','Malgun Gothic','돋움',Dotum,'Apple SD Gothic Neo',sans-serif; color:#666}
 h1, h2, h3, h4, h5, h6{ font-weight:700}
