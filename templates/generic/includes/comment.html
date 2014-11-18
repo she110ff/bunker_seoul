@@ -7,7 +7,7 @@
     {% editable comment.is_public comment.is_removed %}
     {% if not comment.is_removed and comment.is_public or request.user.is_staff %}
     {% if comment.url %}
-    <a href="{{ comment.url }}">ㄹㄹㄹ
+    <a href="{{ comment.url }}">
         <img class="pull-left media-object" src="{% gravatar_url comment.email %}">
     </a>
     <div class="media-body">
