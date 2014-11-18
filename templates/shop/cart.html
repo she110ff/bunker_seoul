@@ -23,18 +23,18 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <th colspan="2" class="left">{% trans "Item" %}</th>
-        <th>{% trans "Unit Price" %}</th>
-        <th class="center">{% trans "Qty" %}</th>
+        <th class="center"><!--{% trans "Remove?" %} --></th>
+        <th class="item left">{% trans "Item" %}</th>
+        <th>{% trans "Unit Price" %} X {% trans "Qty" %}</th>
         <th>{% trans "Price" %}</th>
-        <th class="center">{% trans "Remove?" %}</th>
     </tr>
     </thead>
     <tbody>
     {% for form in cart_formset.forms %}
     {% with form.instance as item %}
     <tr>
-        <td width="30">
+        <!--
+		<td width="30">
             {{ form.id }}
             {% if item.image %}
             <a href="{{ item.get_absolute_url }}">
@@ -42,13 +42,16 @@
             </a>
             {% endif %}
         </td>
-        <td class="left">
+		-->
+        <td class="center">{{ form.DELETE }}</td>
+        <td class="item left">
             <a href="{{ item.get_absolute_url }}">{{ item.description }}</a>
         </td>
-        <td>{{ item.unit_price|currency }}</td>
-        <td class="quantity">{{ form.quantity }}</td>
+        <td>
+			<div>{{ item.unit_price|currency }}</div>
+			<div class="quantity">{{ form.quantity }}</div>
+		</td>
         <td>{{ item.total_price|currency }}</td>
-        <td class="center">{{ form.DELETE }}</td>
     </tr>
     {% endwith %}
     {% endfor %}
