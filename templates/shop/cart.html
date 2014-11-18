@@ -25,10 +25,10 @@
 <table class="table table-striped">
     <thead>
 		<tr>
-			<th class="center"><!--{% trans "Remove?" %} --></th>
 			<th class="item left">{% trans "Item" %}</th>
 			<th class="center">{% trans "Unit Price" %}<!--{% trans "Qty" %}--></th>
 			<th class="center">{% trans "Price" %}</th>
+			<th class="center">{% trans "Remove" %}</th>
 		</tr>
     </thead>
     <tbody>
@@ -45,7 +45,6 @@
 				{% endif %}
 			</td>
 			-->
-			<td class="center">{{ form.DELETE }}</td>
 			<td class="item left">
 				<a href="{{ item.get_absolute_url }}">{{ item.description }}</a>
 			</td>
@@ -54,12 +53,13 @@
 				<div class="quantity">{{ form.quantity }}</div>
 			</td>
 			<td class="center">{{ item.total_price|currency }}</td>
+			<td class="center">{{ form.DELETE }}</td>
 		</tr>
     {% endwith %}
     {% endfor %}
     <tr>
-        <td>&nbsp;</td>
         <td colspan="3">{% order_totals %}</td>
+        <td>&nbsp;</td>
     </tr>
     </tbody>
 </table>
