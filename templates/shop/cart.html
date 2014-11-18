@@ -49,11 +49,11 @@
 			<td class="item left">
 				<a href="{{ item.get_absolute_url }}">{{ item.description }}</a>
 			</td>
-			<td class="amount">
+			<td class="amount center">
 				<div>{{ item.unit_price|currency }}</div>
 				<div class="quantity">{{ form.quantity }}</div>
 			</td>
-			<td class="total">{{ item.total_price|currency }}</td>
+			<td class="center">{{ item.total_price|currency }}</td>
 		</tr>
     {% endwith %}
     {% endfor %}
