@@ -317,7 +317,7 @@ background:linear-gradient(#F0F0F0, #FFF);font-size:12px; line-height:1.5; color
 .rd section>h3,.rd legend{ margin:0;padding:15px 20px;border-bottom:1px solid #f0f0f0;font-size:16px}
 .rd_list ul,.coupon_lst ul,.review_lst ul,.common_lst ul{list-style:none;margin:0;padding:0}
 .rd_list li,.coupon_lst li,.review_lst li,.common_lst li,
-.comment.media{padding:15px 20px;
+.comment.media{ margin:0;padding:15px 20px;
 border-bottom: 1px dotted #f0f0f0;
 font-size: 13px;
 position: relative;}
