@@ -27,7 +27,7 @@
 		<tr>
 			<th class="center"><!--{% trans "Remove?" %} --></th>
 			<th class="item left">{% trans "Item" %}</th>
-			<th>{% trans "Unit Price" %} X {% trans "Qty" %}</th>
+			<th>{% trans "Unit" %}*{% trans "Qty" %}</th>
 			<th>{% trans "Price" %}</th>
 		</tr>
     </thead>
@@ -58,7 +58,7 @@
     {% endwith %}
     {% endfor %}
     <tr>
-        <td colspan="5">{% order_totals %}</td>
+        <td colspan="4">{% order_totals %}</td>
         <td>&nbsp;</td>
     </tr>
     </tbody>
