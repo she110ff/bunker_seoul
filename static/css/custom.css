@@ -201,6 +201,7 @@ body{padding-top:45px;background:#e9e9e9}
 .tb_v4{ width:100%}
 .tb_v4 td,.tb_v4 th{ padding:4px 8px 4px 0;vertical-align:top}
 .tb_v5{ margin:0 -20px}
+.order-history td{ font-size:12px}
 /* Form */
 [class^=lst_type]{ list-style:none; margin:0; padding:0}
 [class^=lst_type] li{ position:relative; padding-left:20px}
