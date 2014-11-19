@@ -289,7 +289,7 @@ background-color: rgba(231,76,60,0.8);}
 .bx-wrapper .bx-viewport{ left:0; border:0;}
 .bx-wrapper img{ max-height:480px; margin:0 auto}
 .rd_img_meta{position:relative; border-top:5px solid #1abc9c; background:linear-gradient(#fff, #F9F9F9);box-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.22),0 -1px 2px 0 rgba(0, 0, 0, 0.22);}
-.rd_img_meta button,.rd_img_meta a{ display:block; width:100%;margin:0; padding:1px 6px;border:0; background:none; text-align:center; font-size:14px; line-height:40px; text-decoration:none;color:#000}
+.rd_img_meta button,.rd_img_meta a,.rd_img_meta input{ display:block; width:100%;margin:0; padding:1px 6px;border:0; background:none; text-align:center; font-size:14px; line-height:40px; text-decoration:none;color:#000}
 .rd_img_meta button small{ font-size:11px}
 .rd_img_meta button[disabled]{ padding-top:7px; line-height:15px; color:#999}
 .rd_img_meta .btn_favor{display: block;
