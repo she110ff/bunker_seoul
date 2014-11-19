@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.views.generic import DetailView, TemplateView
 from mezzanine.conf import settings
-from .models import UserCategory
-from cartridge.shop.models import Category
+from .models import UserCategory, ProductLike
+from cartridge.shop.models import Product, Category
 
 from django.shortcuts import redirect
 from django.template import RequestContext
@@ -38,6 +38,27 @@ def user_subscription(request):
             print str(e)
 
     return HttpResponse(json.dumps(res), content_type="application/json")
+
+def user_like_product(request):
+    res = {"result": "fail", "value":"null"}
+    if request.method == 'POST':
+        try:
+            like = request.POST.get('like')
+            product_id = request.POST.get('product_id')
+            product = Product.objects.get(id=product_id)
+            pl, created = ProductLike.objects.get_or_create(product=product,user=request.user)
+            pl.like = not pl.like
+            pl.save()
+
+            res = {"result": "success", "action":like}
+            HttpResponse(json.dumps(res), content_type="application/json")
+        except Exception as e:
+            print str(e)
+
+    return HttpResponse(json.dumps(res), content_type="application/json")
+
+
+
 
 def pull_git(request):
     import os

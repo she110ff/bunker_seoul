@@ -3,7 +3,8 @@ from django.conf import settings
 from django.db.models import Count, Q, Sum
 from cartridge.shop.models import Category, Product
 from django.contrib.auth.models import User
-from seoul.models import UserCategory
+from seoul.models import UserCategory, ProductLike
+from django.core.exceptions import ObjectDoesNotExist
 
 register = template.Library()
 
@@ -13,6 +14,30 @@ register = template.Library()
 def setenv(context):
     context['S3_URL']=settings.S3_URL
     return ""
+    
+
+
+@register.simple_tag(takes_context=True)
+def product_like(context, product, user):
+	print product
+	print user
+	try:
+		pl = ProductLike.objects.get(product=product, user=user, like=True)
+		like = True
+	except ObjectDoesNotExist:
+		like = False
+
+	context['like']=like
+	print context['like']
+	
+	try:
+		pl = ProductLike.objects.filter(like=True, product=product)
+		context['like_count']=pl.count()
+	except ObjectDoesNotExist:
+		context['like_count'] = 0
+		
+	print context['like_count']
+	return ""
     
 
 @register.assignment_tag

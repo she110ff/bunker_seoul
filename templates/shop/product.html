@@ -1,5 +1,5 @@
 {% extends "seoul/base.html" %}
-{% load staticfiles mezzanine_tags shop_tags rating_tags i18n %}
+{% load staticfiles mezzanine_tags shop_tags rating_tags seoul_tags i18n %}
 
 {% load comment_tags %}
 
@@ -56,9 +56,11 @@ $(document).ready(function() {
 {% editable product.title %}{{ product.title }}{% endeditable %}
 {% endblock %}
 
+
 {% block main %}
 
 
+{% product_like product request.user %}
 	<!--=== Content Part ===-->
 	<div class="container content">
 
@@ -91,7 +93,13 @@ $(document).ready(function() {
 								<input type="submit" class="btn btn-primary pull-right" name="add_wishlist" value="{% trans "Add WishList" %}">
 							</div>
 							<div class="col-md-2 col-xs-2">
-								<button type="submit" class="btn_favor" name="add_cart"><i class="fa fa-shopping-cart"></i></button>
+								<button class="btn_favor" id="product_like" name="product_like" onclick="chagne_like({{ product.id }}); return false;">
+								{% if like %}
+									<i class="fa fa-heart"></i>
+								{% else %}
+									<i class="fa fa-heart"></i>
+								{% endif %}
+								<br>{{like_count}}</button>
 							</div>
 							<div class="col-md-5 col-xs-5">
 								<!-- <button type="button">Buy</button> -->
@@ -201,6 +209,25 @@ $(document).ready(function() {
 		</section>
 		{% endif %}
 	</div><!--/container-->	 
+<script>
 
+
+function chagne_like(product_id){
+	console.log("product_id :"+ product_id)
+    $.ajax({
+      type: 'POST',
+	  url: "/seoul/product/like/",
+	  data:{ 'product_id':product_id, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value}
+	})
+	.done(function( data ) {
+		if ( console && console.log ) {
+			console.log( "subscript > data: ", data)
+			location.reload();
+		}
+	});	
+}
+
+
+</script>
 
 {% endblock %}
