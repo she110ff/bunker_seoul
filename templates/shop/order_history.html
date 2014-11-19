@@ -13,12 +13,12 @@
 
 {% if orders %}
 
+<div class="table-responsive">
 <table class="table table-striped order-history">
     <thead>
         <th class="left">ID</th>
         <th class="left">{% trans "Date / time" %}</th>
-        <th>{% trans "Qty" %}</th>
-        <th>{% trans "Paid" %}</th>
+        <th>{% trans "Paid" %} / {% trans "Qty" %}</th>
         <th colspan="2" class="left">{% trans "Status" %}</th>
     </thead>
     <tbody>
@@ -26,8 +26,7 @@
     <tr>
         <td class="left">{{ order.id }}</td>
         <td class="left">{{ order.time }}</td>
-        <td class="right">{{ order.quantity_total }}</td>
-        <td class="right">{{ order.total|currency }}</td>
+        <td class="right">{{ order.total|currency }} / {{ order.quantity_total }}</td>
         <td>{{ order.get_status_display }}</td>
         <td class="order-actions">
 <!--             <a class="btn btn-sm btn-primary" href="{% url "shop_invoice" order.id %}?format=pdf">{% trans "Download PDF" %}</a> -->
@@ -38,6 +37,7 @@
     {% endfor %}
     </tbody>
 </table>
+</div>
 {% pagination_for orders %}
 
 {% else %}
