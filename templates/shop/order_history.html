@@ -13,7 +13,7 @@
 
 {% if orders %}
 
-<div class="table-responsive">
+<div class="table-responsive" cart-form>
 <table class="table table-striped order-history">
     <thead>
         <th class="left">ID</th>
@@ -25,7 +25,7 @@
     {% for order in orders.object_list %}
     <tr>
         <td class="left">{{ order.id }}</td>
-        <td class="left">{{ order.time }}</td>
+        <td class="left item">{{ order.time }}</td>
         <td class="right">{{ order.total|currency }} / {{ order.quantity_total }}</td>
         <td>{{ order.get_status_display }}</td>
         <td class="order-actions">
