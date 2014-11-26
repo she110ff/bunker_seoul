@@ -24,7 +24,7 @@
 							<div class="grid-boxes-caption">
 								<div class="title"><a href="{{ product.get_absolute_url }}">{{ product }}</a></div>
 								<div class="clearfix">
-									<div class="pull-left"><strong>{% if product.has_price %}{{ product.unit_price }}{% endif %}</strong> </div>
+									<div class="pull-left"><strong>{% if product.has_price %}{{ product.unit_price }}(USD){% endif %}</strong> </div>
 									
 									{% product_like product request.user %}
 									<div class="pull-right color-silver"><button type="button" class="fa fa-heart color-silver" title="좋아요"><span class="sr-only">좋아요</span></button> {{like_count}}</div>

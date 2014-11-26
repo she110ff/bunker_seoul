@@ -150,7 +150,7 @@ EXTRA_MODEL_FIELDS = (
 COMMENTS_USE_RATINGS = False
 
 
-# Setting to turn on featured images for blog posts. Defaults to False.
+#nine.generic.fields.CommentsField", Setting to turn on featured images for blog posts. Defaults to False.
 #
 # BLOG_USE_FEATURED_IMAGE = True
 
