@@ -34,7 +34,28 @@
 {% endifinstalled %}
 {% block extra_css %}{% endblock %}
 {% endcompress %}
+<script>
+    //모바일 브라우저 문자열 체크
 
+
+$(function(){
+    var filter = "win16|win32|win64|mac";
+
+
+
+    var mobileInfo = new Array('Android', 'iPhone', 'iPod', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
+    for (var info in mobileInfo){
+        if (navigator.userAgent.match(mobileInfo[info]) != null){
+            // 모바일 수행
+            console.log("mobile")
+            //alert("mobile")
+            window.location = "/seoul/timeline/"
+            break;
+        }
+    }
+})
+
+</script>
 {% compress js %}
 <!-- <script src="{% static "js/jquery-1.8.3.min.js" %}"  type="text/javascript"></script> -->
 <script src="{% static "assets/plugins/jquery-1.10.2.min.js" %}"  type="text/javascript"></script>
@@ -86,27 +107,6 @@
 <script src="{% static "js/custom.js" %}"  type="text/javascript"></script>
 <script src="{% static "js/bunker.js" %}"></script>
 
-<script>
-    //모바일 브라우저 문자열 체크
 
-
-$(function(){
-    var filter = "win16|win32|win64|mac";
-
-
-
-    var mobileInfo = new Array('Android', 'iPhone', 'iPod', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
-    for (var info in mobileInfo){
-        if (navigator.userAgent.match(mobileInfo[info]) != null){
-            // 모바일 수행
-            console.log("mobile")
-            //alert("mobile")
-            window.location = "/seoul/timeline/"
-            break;
-        }
-    }
-})
-
-</script>
 </body>
 </html>
