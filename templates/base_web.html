@@ -52,13 +52,15 @@
 <script>
     //모바일 브라우저 문자열 체크
 var mobileInfo = new Array('Android', 'iPhone', 'iPod', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
-for (var info in mobileInfo){
-    if (navigator.userAgent.match(mobileKeyWords[info]) != null){
+for (var info in mobileInfo) {
+    if (navigator.userAgent.match(mobileKeyWords[info]) != null) {
         // 모바일 수행
         alert("mobile")
         break;
     }
+}
 
+$(function(){
     var filter = "win16|win32|win64|mac";
 
     if( navigator.platform  ){
@@ -68,7 +70,7 @@ for (var info in mobileInfo){
             alert("PC에서 접속");
         }
     }
-}
+})
 
 </script>
 </head>
