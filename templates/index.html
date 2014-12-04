@@ -1,0 +1,54 @@
+{% extends "base_web.html" %}
+{% load i18n %}
+
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+
+{% block breadcrumb_menu %}
+<li class="active">{% trans "Home" %}</li>
+{% endblock %}
+
+{% block main %}
+{% blocktrans %}
+
+  <div ng-controller="SubscriptionList">
+
+
+
+    <div class="container content" id="lists" style="display:none;">
+		<!-- 그리드 목록 -->
+		<section class="grid-boxes_wrp">
+			<ul class="grid-boxes clearfix">
+					<!-- menu -->
+					<li class="grid-box" ng-repeat="product in products">
+						<div class="grid-boxes-in">
+
+							<a href="{$ product.fields.get_absolute_url $}"><img src="{{MEDIA_URL}}{$ product.fields.image $}" alt=""></a>
+							<div class="grid-boxes-caption">
+								<div class="title"><a href="{$ product.fields.get_absolute_url $}">{$ product.fields.title $}</a></div>
+								<div class="clearfix">
+									<div class="pull-left"><strong>{$ product.fields.unit_price $}(USD)</strong> </div>
+									<div class="pull-right color-silver"><button type="button" class="fa fa-heart color-silver" title="좋아요"><span class="sr-only">좋아요</span></button> 3</div>
+								</div>
+							</div>
+						</div>
+					</li>
+			</ul>
+		</section>
+	</div>
+
+
+
+  </div>
+
+
+
+<script>
+
+$(function(){
+    $("#lists").show()
+})
+
+</script>
+{% endblocktrans %}
+{% endblock %}

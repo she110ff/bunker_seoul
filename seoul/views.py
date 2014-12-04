@@ -13,12 +13,13 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.csrf import requires_csrf_token
 from django.http import (HttpResponse, HttpResponseServerError,
                          HttpResponseNotFound)
-
+from django.core import serializers
 from mezzanine.conf import settings
 from mezzanine.core.forms import get_edit_form
 from mezzanine.core.models import Displayable, SitePermission
 from mezzanine.utils.cache import add_cache_bypass
 from mezzanine.utils.views import is_editable, paginate, render, set_cookie
+
 
 def user_subscription(request):
     res = {"result": "fail", "value":"null"}
@@ -39,6 +40,7 @@ def user_subscription(request):
 
     return HttpResponse(json.dumps(res), content_type="application/json")
 
+
 def user_like_product(request):
     res = {"result": "fail", "value":"null"}
     if request.method == 'POST':
@@ -58,6 +60,20 @@ def user_like_product(request):
     return HttpResponse(json.dumps(res), content_type="application/json")
 
 
+def sub_products(request):
+    res = {"result": "fail", "value":"null"}
+    try:
+        uc, created = UserCategory.objects.get_or_create(user=request.user)
+        uc_all = uc.categories.all()
+        products = [product for category in uc_all for product in category.products.all()]
+        print "get sub_products :",
+    except Category.DoesNotExist:
+        products = []
+        pass
+    data = serializers.serialize('json', products)
+    res = {"result": "success", "products":data}
+
+    return HttpResponse(json.dumps(res), content_type="application/json")
 
 
 def pull_git(request):
