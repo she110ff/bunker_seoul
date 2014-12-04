@@ -44,8 +44,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script
 
 <!--[if lt IE 9]>
-<script src="{% static "assets/pluginsjs/html5shiv.js" %}"></script>
-<script src="{% static "assets/pluginsjs/respond.min.js" %}"></script>
+<script src="{% static "assets/plugins/html5shiv.js" %}"></script>
+<script src="{% static "assets/plugins/respond.js" %}"></script>
 <![endif]-->
 
 {% block extra_head %}{% endblock %}
@@ -93,13 +93,15 @@
 $(function(){
     var filter = "win16|win32|win64|mac";
 
-    if( navigator.platform  ){
-        if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
-            //alert("모바일 기기에서 접속");
-            window.location = "/seoul/timeline/"
-        }else{
-            //alert("PC에서 접속");
 
+
+    var mobileInfo = new Array('Android', 'iPhone', 'iPod', 'BlackBerry', 'Windows CE', 'SAMSUNG', 'LG', 'MOT', 'SonyEricsson');
+    for (var info in mobileInfo){
+        if (navigator.userAgent.match(mobileInfo[info]) != null){
+            // 모바일 수행
+            console.log("mobile")
+            alert("mobile")
+            break;
         }
     }
 })
