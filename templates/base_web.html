@@ -96,9 +96,10 @@ $(function(){
     if( navigator.platform  ){
         if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
             alert("모바일 기기에서 접속");
+            window.location = "/seoul/timeline/"
         }else{
             alert("PC에서 접속");
-            window.location = "/seoul/timeline/"
+
         }
     }
 })
