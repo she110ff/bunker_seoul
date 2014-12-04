@@ -58,6 +58,16 @@ for (var info in mobileInfo){
         alert("mobile")
         break;
     }
+
+    var filter = "win16|win32|win64|mac";
+
+    if( navigator.platform  ){
+        if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
+            alert("모바일 기기에서 접속");
+        }else{
+            alert("PC에서 접속");
+        }
+    }
 }
 
 </script>
