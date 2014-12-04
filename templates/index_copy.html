@@ -1,0 +1,177 @@
+{% extends "base_web.html" %}
+{% load i18n %}
+
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+
+{% block breadcrumb_menu %}
+<li class="active">{% trans "Home" %}</li>
+{% endblock %}
+
+{% block main %}
+{% blocktrans %}
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+  <div ng-controller="SubscriptionList">
+
+
+		<!-- 그리드 목록
+		<section class="grid-boxes_wrp"  id="lists" style="display:none;">
+			<ul class="grid-boxes clearfix">
+
+					<li class="grid-box" ng-repeat="product in products">
+						<div class="grid-boxes-in">
+
+							<a href="{$ product.fields.get_absolute_url $}"><img src="{{MEDIA_URL}}{$ product.fields.image $}" alt=""></a>
+							<div class="grid-boxes-caption">
+								<div class="title"><a href="{$ product.fields.get_absolute_url $}">{$ product.fields.title $}</a></div>
+								<div class="clearfix">
+									<div class="pull-left"><strong>{$ product.fields.unit_price $}(USD)</strong> </div>
+									<div class="pull-right color-silver"><button type="button" class="fa fa-heart color-silver" title="좋아요"><span class="sr-only">좋아요</span></button> 3</div>
+								</div>
+							</div>
+						</div>
+					</li>
+			</ul>
+		</section>
+ -->
+                                <section class="post-list isotope" style="position: relative; overflow: hidden; height: 1800px;">
+                                    <article ng-repeat="product in products" class="post post-grid isotope-item col-md-9" style="width:540px;">
+                                        <div class="box">
+                                            <div class="box-image">
+                                                <a href="blog-post.html">
+                                                    <img src="{{MEDIA_URL}}{$ product.fields.image $}" class="thumbnail" alt="" title="" style="margin-bottom:0px;width: auto;">
+                                                </a>
+                                            </div>
+                                            <div class="box-header">
+                                                <h3>
+                                                    <a href="blog-post.html">
+                                                        {$ product.fields.title $}
+                                                    </a>
+                                                </h3>
+                                                <ul class="post-meta">
+                                                    <li><i class="icon-user"></i> &nbsp; 1 like</li>
+                                                    <li><i class="icon-calendar"></i> &nbsp; {$ product.fields.publish_date $}</li>
+                                                    <li><i class="icon-comment-alt"></i> &nbsp; {$ product.fields.comments_count $} comment</li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="box-content">
+                                                <p>{$ product.fields.description $}</p>
+                                            </div>
+
+                                            <div class="box-footer">
+                                                <div class="pull-right">
+                                                    <a class="btn btn-small" href="blog-post.html" title="">
+                                                        Read more &nbsp; <i class="icon-chevron-right"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+
+                                </section>
+
+
+  </div>
+</div>
+<div class="col-md-3 hidden-sm hidden-xs">
+<div class="sddddpan3">
+                                <!-- Blog categories -->
+<div class="widget Menu">
+    <h3 class="widget-title widget-title ">Fashion playground</h3>
+    <ul class="menu-widget">
+        <li class="level1"><a href="blog.html" title="Trends" class="title">Trends</a></li>
+        <li class="level1"><a href="blog.html" title="Get the look" class="title">Get the look</a></li>
+        <li class="level1"><a href="blog.html" title="Miscellaneous" class="title">Miscellaneous</a></li>
+        <li class="level1"><a href="blog.html" title="New collection" class="title">New collection</a></li>
+    </ul>
+</div>
+<!-- End class="widget Menu" -->
+                                <!-- TopSellingProducts -->
+<div class="widget TopSellingProducts">
+    <h3 class="widget-title widget-title ">Top selling products</h3>
+    <ul class="product-list-small">
+        <li>
+            <div class="image">
+                <a href="product.html" title="El Silencio">
+                    <img src="img/thumbnails/db_file_img_32_160xauto.jpg" alt="El Silencio">
+                </a>
+            </div>
+
+            <div class="desc">
+                <h6>
+                    <a href="product.html" title="El Silencio">El Silencio</a>
+                </h6>
+
+                <div class="price">
+                    £55.00
+                </div>
+
+                 <div class="rating rating-3">
+                    <i class="icon-heart"></i>
+                    <i class="icon-heart"></i>
+                    <i class="icon-heart"></i>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="image">
+                <a href="product.html" title="Lisette Dress">
+                    <img src="img/thumbnails/db_file_img_48_160xauto.jpg" alt="Lisette Dress">
+                </a>
+            </div>
+
+            <div class="desc">
+                <h6>
+                    <a href="product.html" title="Lisette Dress">Lisette Dress</a>
+                </h6>
+
+                <div class="price">
+                    £58.00
+                </div>
+
+                <div class="rating rating-0">
+                    <a href="#">No reviews — be the first?</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="image">
+                <a href="product.html" title="Dustbowl Snapback">
+                    <img src="img/thumbnails/db_file_img_34_160xauto.jpg" alt="Dustbowl Snapback">
+                </a>
+            </div>
+
+            <div class="desc">
+                <h6>
+                    <a href="product.html" title="Dustbowl Snapback">Dustbowl Snapback</a>
+                </h6>
+
+                <div class="price">
+                    £28.00
+                </div>
+
+                <div class="rating rating-0">
+                    <a href="#">No reviews — be the first?</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<!-- End  class="widget TopSellingProducts" -->
+                            </div>
+</div>
+</div>
+</div>
+
+<script>
+
+$(function(){
+    $("#lists").show()
+})
+
+</script>
+{% endblocktrans %}
+{% endblock %}
