@@ -11,31 +11,88 @@
 {% block main %}
 {% blocktrans %}
 
-  <div ng-controller="SubscriptionList">
 
 
-
-		<!-- 그리드 목록 -->
-		<section class="grid-boxes_wrp" style="display: none;" id="lists">
-			<ul class="grid-boxes clearfix">
-					<!-- menu -->
-					<li class="grid-box" ng-repeat="product in products">
-						<div class="grid-boxes-in">
-
-							<a href="{$ product.fields.get_absolute_url $}"><img src="{{MEDIA_URL}}{$ product.fields.image $}" alt=""></a>
-							<div class="grid-boxes-caption">
-								<div class="title"><a href="{$ product.fields.get_absolute_url $}">{$ product.fields.title $}</a></div>
-								<div class="clearfix">
-									<div class="pull-left"><strong>{$ product.fields.unit_price $}(USD)</strong> </div>
-									<div class="pull-right color-silver"><button type="button" class="fa fa-heart color-silver" title="좋아요"><span class="sr-only">좋아요</span></button> 3</div>
-								</div>
-							</div>
+		<!-- 본문 -->
+		<div class="container content" ng-controller="SubscriptionList"  style="display: none;" id="lists">
+			<!-- 포스트 -->
+			<div class="rd clearfix"  ng-repeat="product in products">
+				<section>
+					<div class="rd_img">
+						<div class="rd_slide">
+							<img src="{{MEDIA_URL}}{$ product.fields.image $}" alt="">
 						</div>
+					</div>
+					<header class="rd_hd">
+						<h2>{$ product.fields.title $}<b class="pull-right">{$ product.fields.sale_price $}$</b></h2>
+					</header>
+					<div class="rd_meta2" style="text-align: left;">
+						 {$ product.fields.description $}
+					</div>
+					<div class="rd_meta2">
+					 {$ product.fields.comments_count $} comments
+					</div>
+				</section>
+			</div>
+
+		</div>
+
+
+		<!-- 사이드 -->
+		<div id="side" class="rd">
+			<section class="rd_list">
+				<h3>Recommend Brand</h3>
+				<ul class="price-list">
+					<li class="clearfix">
+						<img class="pull-left" src="http://d8u1nmttd4enu.cloudfront.net/static/bundles/marketing/images/featured-contests/logo-design/145385/hero_medium_logodesign_locho_145385.jpg" alt="">
+						<h5>Fabric Type</h5>
+						<p>Cotton</p>
 					</li>
-			</ul>
-		</section>
-
-
+					<li class="clearfix">
+						<img class="pull-left" src="http://d8u1nmttd4enu.cloudfront.net/static/bundles/marketing/images/featured-contests/logo-design/145385/hero_medium_logodesign_locho_145385.jpg" alt="">
+						<h5>Fabric Type</h5>
+						<p>Cotton</p>
+					</li>
+					<li class="clearfix">
+						<img class="pull-left" src="http://d8u1nmttd4enu.cloudfront.net/static/bundles/marketing/images/featured-contests/logo-design/145385/hero_medium_logodesign_locho_145385.jpg" alt="">
+						<h5>Fabric Type</h5>
+						<p>Cotton</p>
+					</li>
+					<li class="clearfix">
+						<img class="pull-left" src="http://d8u1nmttd4enu.cloudfront.net/static/bundles/marketing/images/featured-contests/logo-design/145385/hero_medium_logodesign_locho_145385.jpg" alt="">
+						<h5>Fabric Type</h5>
+						<p>Cotton</p>
+					</li>
+				</ul>
+			</section>
+			<section class="rd_list">
+				<h3>Hot Product</h3>
+				<ul class="price-list">
+					<li class="clearfix">
+						<img class="pull-left" src="http://images.askmen.com/fashion/apparel/1243535350_jcrew-ludlow-suit_1.jpg" alt="">
+						<h5>Fabric Type</h5>
+						<p>Cotton</p>
+					</li>
+					<li class="clearfix">
+						<img class="pull-left" src="http://images.askmen.com/fashion/apparel/1243535350_jcrew-ludlow-suit_1.jpg" alt="">
+						<h5>Fabric Type</h5>
+						<p>Cotton</p>
+					</li>
+					<li class="clearfix">
+						<img class="pull-left" src="http://images.askmen.com/fashion/apparel/1243535350_jcrew-ludlow-suit_1.jpg" alt="">
+						<h5>Fabric Type</h5>
+						<p>Cotton</p>
+					</li>
+					<li class="clearfix">
+						<img class="pull-left" src="http://images.askmen.com/fashion/apparel/1243535350_jcrew-ludlow-suit_1.jpg" alt="">
+						<h5>Fabric Type</h5>
+						<p>Cotton</p>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	<!-- End Content Part -->
 <script>
 
 $(function(){

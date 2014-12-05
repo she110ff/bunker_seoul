@@ -23,6 +23,7 @@
 
 <link rel="stylesheet" href="{% static "css/jquery.bxslider.css" %}">
 <link rel="stylesheet" href="{% static "css/custom.css" %}">
+<link rel="stylesheet" href="{% static "css/web.css" %}">
 {% if LANGUAGE_BIDI %}
 	<link rel="stylesheet" href="{% static "css/rtl.css" %}">
 {% endif %}
@@ -82,15 +83,28 @@ $(function(){
 	<!--=== Header ===-->	
 	<div id="hd">
 		<!-- Top -->
-		<div id="top" class="clear">
-			<h1 align="left"><a href="/">space.d</a></h1>
-            <a align="right" class="fa fa-search fr" href="search.html"><span class="sr-only">검색</span></a>
+		<div id="top" class="w960 clear">
+			<h1 class="pull-left"><a href="/">space.d</a></h1>
+			<div class="search pull-right">
+				<form action="" role="form">
+					<input type="text">
+					<button type="button" class="fa fa-search nostyle"><span class="sr-only">검색</span></button>
+				</form>
+			</div>
+			<div class="account pull-right">
+				<a class="fa fa-home" href=""><span class="sr-only">홈</span></a>
+				<a class="fa fa-shopping-cart" href=""><span class="sr-only">cart</span></a>
+				<a class="fa fa-comment-o" href=""><span class="sr-only">comment</span></a>
+				<a class="fa fa-power-off" href="/account/logout/"><span class="sr-only">logout</span></a>
+			</div>
 		</div>
 	</div>
 	<!--=== End Header ===-->
 
 	<!--=== Content Part ===-->
-	<div class="container content">
+	<div id="container" class="w960 clear">
+		<!-- logo -->
+
 {% block main %}{% endblock %}
 
 

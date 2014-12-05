@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+body{ background:#36465d}
+.w960{ position:relative; max-width:960px !important; margin:auto}
+
+#container{ margin:40px auto; padding:0 280px 0 0}
+.designer_logo{ position:absolute;top:0;left:0; width:80px}
+.designer_logo img{ border-radius:6px}
+#side{ position:absolute;top:0; right:0; width:240px}
+.account a{ margin:12px 0 0 24px; font-size:23px; color:rgba(255,255,255,.7)}
+.account a:hover{color:#FFF}
+.search{ position:relative; margin:8px 0 0 36px}
+.search input{ padding:2px 8px; border:2px solid rgba(255,255,255,.4); border-radius:3px; background:none}
+.search button{ position:absolute;top:5px; right:3px; font-size:16px;color:rgba(255,255,255,.7)}
+.rd_hd h2{ font-size:16px; text-align:left; letter-spacing:0; }
+.rd_hd b{ font-size:.9em;color:#666}
+.rd_meta2{ padding:16px 20px; border-top:1px solid #36465d; font-weight:700; text-align:right; color:#999}
+.rd_meta2 i{font-size:16px;}
+.price-list img{ width:40px; margin-right:12px}
+.price-list h5{ margin:0 0 8px}
+.price-list p{ margin:0}
+
+/* fix */
+#hd{background:#36465d;box-shadow:0 0 0 1px rgba(255,255,255,.13)}
+#hd h1{ padding:0;}
+#hd h1 a{color:#FFF}
+.container{ width:100%; padding:0}
+.rd>section{ margin-bottom:20px}
