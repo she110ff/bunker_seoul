@@ -18,40 +18,7 @@ jQuery(document).ready(function(){
 		};
 	});
 
-$.event.special.scrollstart = {
-    enabled: true,
 
-        setup: function() {
-            var thisObject = this,
-                $this = $( thisObject ),
-                    scrolling,
-                    timer;
-
-            function trigger( event, state ) {
-                scrolling = state;
-                var originalType = event.type;
-                event.type = scrolling ? "scrollstart" : "scrollstop";
-                $.event.handle.call( thisObject, event );
-                event.type = originalType;
-            }
-
-            // iPhone triggers scroll after a small delay; use touchmove instead
-            $this.bind( scrollEvent, function( event ) {
-                if ( !$.event.special.scrollstart.enabled ) {
-                    return;
-                }
-
-                if ( !scrolling ) {
-                    trigger( event, true );
-                }
-
-                clearTimeout( timer );
-                timer = setTimeout(function() {
-                    trigger( event, false );
-                }, 50 );
-            });
-        }
-};
 
 
 // bxslider
