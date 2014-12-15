@@ -16,7 +16,14 @@ jQuery(document).ready(function(){
 			$('body').removeClass('scroll_start');
 		};
 	});
-
+// Scroll
+	$(window).onscroll(function(){
+		if($(this).scrollTop()>0){
+			$('body').addClass('scroll_start');
+		} else {
+			$('body').removeClass('scroll_start');
+		};
+	});
 // bxslider
 	$('.bxslider').bxSlider({
 		
