@@ -279,7 +279,7 @@ background-color: rgba(231,76,60,0.8);}
 .grid-box .btnarea{ padding:0 5px 5px;/* border-top:1px solid #e7e7e7*/}
 @media screen and (max-width:640px){
 .grid-boxes_wrp{ margin:0 -5px}
-.grid-box{ width:50%}
+.grid-box{ width:100%}
 }
 .grid-box-shop .more{ display:block; margin:0 10px 15px; text-align:left; font-size:11px; color:#999}
 .grid-box-shop .title{ margin:20px 8px 8px; font-size:16px}
