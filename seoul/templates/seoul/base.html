@@ -131,17 +131,19 @@ jQuery(function() {
 
   });
 });
-
-function isAndroidBelow3() {
-    return !!navigator.userAgent.match(/Android [1-2]/i);
-}
-
-if(isAndroidBelow3()){
-    $(document.body).css("overflow", "auto");
-    alert("con")
-}
-
 //]]>
+
+
+// Scroll
+	$(window).scroll(function(){
+		if($(window).scrollTop()>0){
+			$('body').addClass('scroll_start');
+
+		} else {
+			$('body').removeClass('scroll_start');
+		};
+	});
+
 </script>
 
  
