@@ -12,7 +12,7 @@ jQuery(document).ready(function(){
 	$(window).scroll(function(){
 		if($(window).scrollTop()>0){
 			$('body').addClass('scroll_start');
-            alert("$(window).scrollTop():"+$(window).scrollTop())
+            
 		} else {
 			$('body').removeClass('scroll_start');
 		};
