@@ -18,11 +18,9 @@ jQuery(document).ready(function(){
 	});
 
 // bxslider
-/*
 	$('.bxslider').bxSlider({
 		
 	});
-*/
 
 // menu
 	$('div.wrapper').append('<button type="button" id="sidebar_tg" onclick="menuClose();"><b class="blind">Close</b></button>');
