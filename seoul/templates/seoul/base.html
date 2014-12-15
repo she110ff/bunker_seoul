@@ -131,6 +131,16 @@ jQuery(function() {
 
   });
 });
+
+function isAndroidBelow3() {
+    return !!navigator.userAgent.match(/Android [1-2]/i);
+}
+
+if(isAndroidBelow3()){
+    $(document.body).css("overflow", "auto");
+    alert("con")
+}
+
 //]]>
 </script>
 
