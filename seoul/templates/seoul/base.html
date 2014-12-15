@@ -51,6 +51,16 @@
 </head>
 
 <body id="{% block body_id %}body{% endblock %}">
+<!-- GNB -->
+<nav id="gnb">
+	<ul class="clearfix">
+		<li><a href="/seoul/timeline" id="home_item"><i class="fa fa-home"></i>Home</a></li>
+		<li><a href="/seoul/subscription/list/"><i class="fa fa-envelope" style="font-size:21px"></i>Subscription</a></li>
+		<li><a href="/seoul/recommend/"><i class="fa fa-bookmark" style="font-size:23px"></i>Recommend</a></li>
+		<li><a href="/shop/cart/"><i class="fa fa-shopping-cart"></i>Cart</a></li>
+		<li><a href="/" onClick="menuOpen('snb');return false;"><i class="fa fa-user"></i>User</a></li>
+	</ul>
+</nav>
 <!-- Mypage -->
 <div id="snb" class="side_nav mypage">
 	<header>
@@ -58,13 +68,12 @@
 		<a class="btn-u btn-u-sm" href="#">로그인</a> -->
 		<!-- 로그인 후 -->
 		<h1><!-- <img class="pull-left" src="http://img.ezmember.co.kr/cache/board/2012/12/30/950b4b2daac4355a101ec83505a0984e.jpg" alt="">  -->{{request.user.username}}</h1>
-		<a class="fa fa-chevron-left pull-right" href="#" onClick="menuClose();return false;"><span class="sr-only">Close</span></a>
+		<!--<a class="fa fa-chevron-left pull-right" href="#" onClick="menuClose();return false;"><span class="sr-only">Close</span></a>-->
 	</header>
 	<section>
 		<div>
 			<ul>
-				<a href="/seoul/timeline/"><li>MAIN</li></a>
-				<a href="/seoul/subscription/list/"><li>SUBSCRIPTION</li></a>
+
 				<a href="/shop/cart/"><li>CART</li></a>
 				<a href="/shop/wishlist/"><li>WISHLIST</li></a>
 				<a href="/account/orders/"><li>ORDER HISTORY</li></a>
@@ -91,18 +100,16 @@
 {% endnevercache %}	
 
 <div class="wrapper">
-	<!--=== Header ===-->	
+	<!--=== Header ===-->
 	<div id="hd">
 		<!-- Top -->
 		<div id="top" class="clear">
-			{% if user.is_authenticated %}
-			<a class="fa fa-bars fl" onClick="menuOpen('snb');return false;"><span class="sr-only">메뉴</span></a>
-			{% endif %}
+
 <!-- 			<a class="fa fa-search fr" href="search.html"><span class="sr-only">검색</span></a> -->
 			<h1><a href="/seoul/timeline/">space.d</a></h1>
 		</div>
 	</div>
-	
+
 
 		
 	<!--=== End Header ===-->
@@ -111,6 +118,21 @@
 
 
 
+<script type="text/javascript" charset="utf-8">
+//<![CDATA[
+jQuery(function() {
+  jQuery('#gnb li a').each(function() {
+    if (jQuery(this).attr('href')  ===  window.location.pathname) {
+      jQuery(this).addClass('on');
+    }
+    if ("/seoul/timeline/"  ===  window.location.pathname) {
+        jQuery('#home_item').addClass('on');
+    }
+
+  });
+});
+//]]>
+</script>
 
  
 <script src="{% static "assets/plugins/jquery-migrate-1.2.1.min.js" %}"  type="text/javascript"></script> 

@@ -1,0 +1,105 @@
+{% extends "seoul/base.html" %}
+
+{% load seoul_tags i18n %}
+
+{% block main %}
+
+
+
+	<!--=== Content Part ===-->
+	<div class="container content">
+		<!-- 카테고리
+		<div class="tab">
+			<ul class="row">
+				<li class="col-xs-6"><a class="on" href="#">Designer</a></li>
+				<li class="col-xs-6"><a href="#">Product</a></li>
+			</ul>
+		</div>-->
+		<!-- 레코멘드 목록 -->
+		<!-- 섹션하나 -->
+		<section class="rec_wrp">
+			<h3>
+				<img class="pull-left" src="http://ec2-54-65-51-190.ap-northeast-1.compute.amazonaws.com/static/media/uploads/shop/sub_shop/jonathan_ive.jpg" alt="">
+				<strong>NewbarK</strong>
+				<small>Shoe, Bags, Flats</small>
+				<button type="button" class="on"><i class="fa fa-check-circle"></i>Following</button>
+				<button type="button"><i class="fa fa-plus-circle"></i>Follow</button>
+			</h3>
+			<ul class="row">
+				<li class="col-xs-4">
+					<a href="detail.html"><img src="http://ec2-54-65-51-190.ap-northeast-1.compute.amazonaws.com/static/media/product/image1xxl_5.jpg" alt=""></a>
+					<h5 class="ellipsis"><a href="detail.html">Angle Front Cardigan</a></h5>
+					<span class="price">$698</span>
+				</li>
+				<li class="col-xs-4">
+					<a href="detail.html"><img src="http://ec2-54-65-51-190.ap-northeast-1.compute.amazonaws.com/static/media/product/image1xxl_4.jpg" alt=""></a>
+					<h5 class="ellipsis"><a href="detail.html">Angle Front Cardigan</a></h5>
+					<span class="price">$698</span>
+				</li>
+				<li class="col-xs-4">
+					<a href="detail.html"><img src="http://ec2-54-65-51-190.ap-northeast-1.compute.amazonaws.com/static/media/product/image1xxl_2.jpg" alt=""></a>
+					<h5 class="ellipsis"><a href="detail.html">Angle Front Cardigan</a></h5>
+					<span class="price">$698</span>
+				</li>
+			</ul>
+		</section>
+		<!-- 섹션하나 -->
+		<section class="rec_wrp">
+			<h3>
+				<img class="pull-left" src="http://ec2-54-65-51-190.ap-northeast-1.compute.amazonaws.com/static/media/uploads/shop/sub_shop/kevin_spacey.jpg" alt="">
+				<strong>NewbarK</strong>
+				<small>Shoe, Bags, Flats</small>
+				<button type="button" class="on"><i class="fa fa-check-circle"></i>Following</button>
+				<button type="button"><i class="fa fa-plus-circle"></i>Follow</button>
+			</h3>
+			<ul class="row">
+
+				<li class="col-xs-4">
+					<a href="detail.html"><img src="http://ec2-54-65-51-190.ap-northeast-1.compute.amazonaws.com/static/media/product/20141021172410.jpg" alt=""></a>
+					<h5 class="ellipsis"><a href="detail.html">Angle Front Cardigan</a></h5>
+					<span class="price">$698</span>
+				</li>
+				<li class="col-xs-4">
+					<a href="detail.html"><img src="http://ec2-54-65-51-190.ap-northeast-1.compute.amazonaws.com/static/media/product/20141205182326.jpg" alt=""></a>
+					<h5 class="ellipsis"><a href="detail.html">Angle Front Cardigan</a></h5>
+					<span class="price">$698</span>
+				</li>
+
+			</ul>
+		</section>
+	</div><!--/container-->	 
+	<!-- End Content Part -->
+	
+	
+<script>
+
+function subscript(subscription_value, category_id){
+	console.log("subscription_value :"+ subscription_value)
+	var action = "del"
+	if(subscription_value){
+		action = "add"
+	}
+		
+	
+    $.ajax({
+      type: 'POST',
+	  url: "/seoul/user/subscription/",
+	  data:{'action':action, 'category_id':category_id, csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value}
+	})
+	.done(function( data ) {
+		if ( console && console.log ) {
+			console.log( "subscript > data: ", data)
+			location.href = "/seoul/subscription/list/"
+		}
+	});	
+}
+
+
+
+
+</script>
+
+
+	
+	
+{% endblock %}
