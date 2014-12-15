@@ -42,8 +42,8 @@ urlpatterns += patterns('',
     # one homepage pattern, so if you use a different one, comment this
     # one out.
 
-    #url("^$", login_required(direct_to_template), {"template": "seoul/timeline.html"}, name="home"),
-    url("^$", login_required(direct_to_template), {"template": "index.html"}, name="home"),
+    url("^$", login_required(direct_to_template), {"template": "seoul/timeline.html"}, name="home"),
+    #url("^$", login_required(direct_to_template), {"template": "index.html"}, name="home"),
 
     # HOMEPAGE AS AN EDITABLE PAGE IN THE PAGE TREE
     # ---------------------------------------------
