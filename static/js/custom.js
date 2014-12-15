@@ -8,10 +8,21 @@ jQuery(document).ready(function(){
         });
     });
 
+// Scroll
+	$(window).scroll(function(){
+		if($(this).scrollTop()>0){
+			$('body').addClass('scroll_start');
+		} else {
+			$('body').removeClass('scroll_start');
+		};
+	});
+
 // bxslider
+/*
 	$('.bxslider').bxSlider({
 		
 	});
+*/
 
 // menu
 	$('div.wrapper').append('<button type="button" id="sidebar_tg" onclick="menuClose();"><b class="blind">Close</b></button>');
